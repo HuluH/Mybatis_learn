@@ -13,6 +13,9 @@
         </environment>
     </environments>
 
+    <!-- 此处配置应当注意，第一次配置时忘记了关联mapper
+         若使用xml配置的话，此处的子标签为 resource
+          若使用注解配置，则此处使用的子标签为class，值为dao接口的全限定名-->
     <mappers>
         <mapper class="com.test.dao.IUserDao"></mapper>
     </mappers>

@@ -3,12 +3,12 @@
 <configuration>
     <environments default="mysql">
         <environment id="mysql">
-            <transactionManager type="POOLED"></transactionManager>
-            <dataSource type="mysql">
-                <property name="driver" value="com.mysql.jdbc.Driver"></property>
-                <property name="url" value="jdbc:mysql://localhost:3306/eesy"></property>
-                <property name="username" value="root"></property>
-                <property name="password" value="root"></property>
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/eesy"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
             </dataSource>
         </environment>
     </environments>
@@ -17,6 +17,6 @@
          若使用xml配置的话，此处的子标签为 resource
           若使用注解配置，则此处使用的子标签为class，值为dao接口的全限定名-->
     <mappers>
-        <mapper class="com.test.dao.IUserDao"></mapper>
+        <mapper class="com.test.dao.IUserDao"/>
     </mappers>
 </configuration>

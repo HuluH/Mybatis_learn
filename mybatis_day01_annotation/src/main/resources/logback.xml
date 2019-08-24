@@ -3,12 +3,9 @@
 
     <!-- appender 负责定义日志输出的目的地 -->
     <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <layout class="ch.qos.logback.classic.PatternLayout">
-                <pattern>%d -- %msg%n</pattern>
-            </layout>
-            <charset>UTF-8</charset>
-        </encoder>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d -- %msg%n</pattern>
+        </layout>
     </appender>
 
     <appender name="fileInfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">

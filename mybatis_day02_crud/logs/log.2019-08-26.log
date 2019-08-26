@@ -1,0 +1,4 @@
+[2019-08-26 09:59:22.992] [main] INFO  com.testTest : 查无此人
+[2019-08-26 10:54:16.769] [main] INFO  com.testTest : User(id=4, username=李四, birthday=Sat Aug 24 11:58:00 AWST 2019, sex=男, address=北京市顺义区)
+[2019-08-26 10:54:16.769] [main] INFO  com.testTest : User(id=6, username=李留, birthday=Mon Aug 26 09:26:09 AWST 2019, sex=女, address=北京市昌平区)
+[2019-08-26 10:54:16.769] [main] INFO  com.testTest : User(id=8, username=李恒利, birthday=Mon Aug 26 09:38:48 AWST 2019, sex=女, address=北京市昌平区)

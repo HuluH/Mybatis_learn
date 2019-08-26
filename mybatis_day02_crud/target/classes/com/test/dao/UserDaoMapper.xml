@@ -1,0 +1,51 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.dao.IUserDao">
+
+    <!--
+    <resultMap id="resultMap" type="com.test.entry.User">
+        <id column="id" property="uid" jdbcType="int"/>
+        <result column="username" property="uname" jdbcType="varchar"/>
+        <result column="birthday" property="udate" jdbcType="datetime"/>
+        <result column="sex" property="usex" jdbcType="char"/>
+        <result column="address" property="uaddress"/>
+    </resultMap>
+    -->
+    <!--
+    <parameterMap id="parameterMap" type="com.test.entry.User">
+        <parameter column="id" property="uid" jdbcType="int"/>
+        <parameter column="username" property="uname" jdbcType="varchar"/>
+        <parameter column="birthday" property="udate" jdbcType="datetime"/>
+        <parameter column="sex" property="usex" jdbcType="char"/>
+        <parameter column="address" property="uaddress"/>
+    </parameterMap>
+    -->
+
+    <select id="findAll" resultType="com.test.entry.User">
+        select * from User;
+    </select>
+
+    <select id="findOne" parameterType="int" resultType="com.test.entry.User">
+        select * from User where id = #{id};
+    </select>
+
+    <insert id="add" parameterType="com.test.entry.User">
+        <selectKey resultType="int" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID();
+        </selectKey>
+        insert into User(username,birthday,sex,address) values (#{username},#{birthday},#{sex},#{address});
+    </insert>
+
+    <update id="update" parameterType="com.test.entry.User">
+        update user set username = #{username} where id = #{id};
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from user where id = #{id};
+    </delete>
+
+    <select id="findHalf" parameterType="String" resultType="com.test.entry.User">
+        select * from user where username like #{username};
+    </select>
+</mapper>

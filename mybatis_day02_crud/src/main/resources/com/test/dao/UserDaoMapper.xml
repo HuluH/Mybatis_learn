@@ -1,0 +1,46 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.dao.IUserDao">
+
+    <!--当数据库中的表的列名称和java代码中的实体类的字段名称不一致的时候有三种解决方案；
+    方案一：在sql语句中为每一个字段定义别名，这种情况比较啰嗦
+    方案二：定义resultMap映射
+    方案三：resultType属性值为Map，将表中列的名称作为key，值作为value，然后从map中进行取值操作并封装到对应的实体类中去-->
+    <!--
+    <resultMap id="resultMap" type="com.test.entry.User">
+        <id column="id" property="uid" jdbcType="int"/>
+        <result column="username" property="uname" jdbcType="varchar"/>
+        <result column="birthday" property="udate" jdbcType="datetime"/>
+        <result column="sex" property="usex" jdbcType="char"/>
+        <result column="address" property="uaddress"/>
+    </resultMap>
+    -->
+
+    <select id="findAll" resultType="com.test.entry.User">
+        select * from User;
+    </select>
+
+    <select id="findOne" parameterType="int" resultType="com.test.entry.User">
+        select * from User where id = #{id};
+    </select>
+
+    <insert id="add" parameterType="com.test.entry.User">
+        <selectKey resultType="int" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID();
+        </selectKey>
+        insert into User(username,birthday,sex,address) values (#{username},#{birthday},#{sex},#{address});
+    </insert>
+
+    <update id="update" parameterType="com.test.entry.User">
+        update user set username = #{username} where id = #{id};
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from user where id = #{id};
+    </delete>
+
+    <select id="findHalf" parameterType="String" resultType="com.test.entry.User">
+        select * from user where username like #{username};
+    </select>
+</mapper>

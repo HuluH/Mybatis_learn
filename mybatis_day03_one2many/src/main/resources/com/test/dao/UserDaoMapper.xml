@@ -1,0 +1,26 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.dao.IUserDao">
+    <!--注意
+        此处定义的时候出现了一个问题，在定义collection的时候、
+        主表的主键为id，从表的主键也是id，如果不定义别名的情况下查询出结果进行解析的时候会出现问题
+        从表的id属性会被赋值为主表的id属性，且从表的记录只能查询一条，不能体现一对多的关联关系，这样做是不正确的
+        所以，当主表的主键属性和从表的id属性取值一样的时候，应该对从表的属性进行设置别名-->
+    <resultMap id="userMap" type="user">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="birthday" property="birthday"/>
+        <result column="sex" property="sex"/>
+        <result column="address" property="address"/>
+        <collection property="accounts" ofType="account">
+            <id column="aid" property="id"/>
+            <result column="accountName" property="name"/>
+            <result column="money" property="money"/>
+        </collection>
+    </resultMap>
+
+    <select id="findUserAndAccount" resultMap="userMap">
+        select u.*, a.id as aid,a.name as accountName,a.money as money from user u,account a where a.name = u.username
+    </select>
+</mapper>

@@ -1,0 +1,6 @@
+[2019-09-02 15:44:10.046] [main] INFO  com.one2ManyTest : Account(id=3, name=孙琪, money=10000.0, user=User(id=3, username=孙琪, birthday=Mon Aug 26 09:35:57 CST 2019, sex=女, address=北京市昌平区))
+[2019-09-02 15:44:10.046] [main] INFO  com.one2ManyTest : Account(id=1, name=李恒利, money=9200.0, user=User(id=1, username=李恒利, birthday=Mon Aug 26 09:38:48 CST 2019, sex=女, address=北京市昌平区))
+[2019-09-02 15:44:10.046] [main] INFO  com.one2ManyTest : Account(id=2, name=李恒利, money=10800.0, user=User(id=2, username=李恒利, birthday=Mon Aug 26 09:38:48 CST 2019, sex=女, address=北京市昌平区))
+[2019-09-02 15:46:46.488] [main] INFO  com.one2ManyTest : Account(id=3, name=孙琪, money=10000.0, user=User(id=3, username=孙琪, birthday=Mon Aug 26 09:35:57 CST 2019, sex=女, address=北京市昌平区))
+[2019-09-02 15:46:46.488] [main] INFO  com.one2ManyTest : Account(id=1, name=李恒利, money=9200.0, user=User(id=1, username=李恒利, birthday=Mon Aug 26 09:38:48 CST 2019, sex=女, address=北京市昌平区))
+[2019-09-02 15:46:46.488] [main] INFO  com.one2ManyTest : Account(id=2, name=李恒利, money=10800.0, user=User(id=2, username=李恒利, birthday=Mon Aug 26 09:38:48 CST 2019, sex=女, address=北京市昌平区))

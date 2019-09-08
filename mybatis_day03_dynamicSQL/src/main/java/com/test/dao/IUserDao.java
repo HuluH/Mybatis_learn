@@ -17,4 +17,8 @@ public interface IUserDao {
     void delete(int id);
 
     List<User> findHalf(String username);
+
+    List<User> findCondition(User user);
+
+    List<User> findConditionList(List list);
 }

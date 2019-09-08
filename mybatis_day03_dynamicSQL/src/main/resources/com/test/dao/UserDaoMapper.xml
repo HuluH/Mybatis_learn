@@ -1,0 +1,87 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.dao.IUserDao">
+    <select id="findAll" resultType="com.test.entry.User">
+        select * from User;
+    </select>
+
+    <select id="findOne" parameterType="int" resultType="com.test.entry.User">
+        select * from User where id = #{id};
+    </select>
+
+    <insert id="add" parameterType="com.test.entry.User">
+        <selectKey resultType="int" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID();
+        </selectKey>
+        insert into User(username,birthday,sex,address) values (#{username},#{birthday},#{sex},#{address});
+    </insert>
+
+    <update id="update" parameterType="com.test.entry.User">
+        update user set address = #{address} where id = #{id};
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from user where id = #{id};
+    </delete>
+
+    <select id="findHalf" parameterType="String" resultType="com.test.entry.User">
+        select * from user where username like #{username};
+    </select>
+
+    <!--
+    <select id="findCondition" parameterType="User" resultType="User">
+        select * from user where 1 = 1
+        <if test="username != null and username != ''">
+            and username = #{username}
+        </if>
+        <if test="sex != null and sex != ''">
+            and sex = #{sex}
+        </if>
+    </select>
+    -->
+    <select id="findCondition" parameterType="user" resultType="user">
+        select * from USER
+        <where>
+            <if test="username != null and username != ''">
+                username = #{username}
+            </if>
+            <if test="sex != null and sex != ''">
+                and sex = #{sex}
+            </if>
+        </where>
+    </select>
+
+    <!--这是瞎写的-->
+    <select id="find" parameterType="user" resultMap="user">
+        select * freom user
+        <where>
+            <if test="username != null and username != ''">
+                username = #{username}
+            </if>
+        </where>
+    </select>
+
+    <!--这是瞎写的-->
+    <select id="find" parameterType="user" resultMap="user">
+        select * freom user
+        <where>
+            <if test="id != null">
+                id in
+                <foreach collection="list" item="item" open="(" close=")" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+    <select id="findConditionList" resultType="user" parameterType="list">
+        select * from USER
+        <where>
+            id in
+            <foreach item="item" collection="list" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+        </where>
+    </select>
+</mapper>

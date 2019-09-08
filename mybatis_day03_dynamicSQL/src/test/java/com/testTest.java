@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -76,8 +77,8 @@ public class testTest {
     public void update() throws Exception {
         init();
         User user = new User();
-        user.setId(8);
-        user.setUsername("李恒利");
+        user.setId(7);
+        user.setAddress("北京市西城区");
         dao.update(user);
         session.commit();
         destory();
@@ -92,11 +93,45 @@ public class testTest {
     }
 
     @Test
-    public void findHalf() throws Exception{
+    public void findHalf() throws Exception {
         init();
         List<User> users = dao.findHalf("%李%");
         for (User user : users) {
             logger.info(user.toString());
+        }
+        destory();
+    }
+
+    @Test
+    public void findCondition() throws Exception {
+        init();
+        User user = new User();
+        user.setUsername("张三");
+        user.setSex('F');
+        List<User> users = dao.findCondition(user);
+        if (users.size() == 0) {
+            logger.info("查无此人");
+        } else {
+            for (User u : users) {
+                System.out.println(u.toString());
+            }
+        }
+        destory();
+    }
+
+    @Test
+    public void findCOnditionList() throws Exception {
+        init();
+        List<Integer> idList = new ArrayList<Integer>();
+        idList.add(8);
+        idList.add(11);
+        List<User> users = dao.findConditionList(idList);
+        if (users.size() == 0) {
+            logger.info("查无此人");
+        } else {
+            for (User u : users) {
+                System.out.println(u.toString());
+            }
         }
         destory();
     }

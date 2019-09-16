@@ -29,7 +29,7 @@
         select * from user where username like #{username};
     </select>
 
-    <!--
+<!--
     <select id="findCondition" parameterType="User" resultType="User">
         select * from user where 1 = 1
         <if test="username != null and username != ''">
@@ -39,7 +39,8 @@
             and sex = #{sex}
         </if>
     </select>
-    -->
+-->
+
     <select id="findCondition" parameterType="user" resultType="user">
         select * from USER
         <where>
@@ -53,6 +54,8 @@
     </select>
 
     <!--这是瞎写的-->
+<!--
+
     <select id="find" parameterType="user" resultMap="user">
         select * freom user
         <where>
@@ -61,8 +64,11 @@
             </if>
         </where>
     </select>
+-->
 
-    <!--这是瞎写的-->
+<!--
+    &lt;!&ndash;这是瞎写的&ndash;&gt;
+
     <select id="find" parameterType="user" resultMap="user">
         select * freom user
         <where>
@@ -74,6 +80,7 @@
             </if>
         </where>
     </select>
+-->
 
     <select id="findConditionList" resultType="user" parameterType="list">
         select * from USER
@@ -84,4 +91,13 @@
             </foreach>
         </where>
     </select>
+
+    <!--批量插入数据-->
+    <insert id="insertList" parameterType="list">
+        insert into User(username,birthday,sex,address)
+        values
+        <foreach collection="list" separator="," item="user" index="id">
+            (#{user.username},#{user.birthday},#{user.sex},#{user.address})
+        </foreach>
+    </insert>
 </mapper>

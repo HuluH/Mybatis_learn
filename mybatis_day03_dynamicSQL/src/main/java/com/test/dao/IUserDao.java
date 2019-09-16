@@ -21,4 +21,6 @@ public interface IUserDao {
     List<User> findCondition(User user);
 
     List<User> findConditionList(List list);
+
+    void insertList(List<User> userList);
 }
